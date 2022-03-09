@@ -9246,10 +9246,10 @@ react-native-screens@~3.10.1:
     react-freeze "^1.0.0"
     warn-once "^0.1.0"
 
-react-native-snappy@^0.0.14:
-  version "0.0.14"
-  resolved "https://registry.yarnpkg.com/react-native-snappy/-/react-native-snappy-0.0.14.tgz#564e85917ae9473a8a8055a9823d4d107775d887"
-  integrity sha512-oDTVIpH/KugiPIb2Q769+tAoT8nlxGvCwgD28iBL3o465aRBnJIekLsmM2k5FA9Z//vguxwR6KnPC21VDd7EPg==
+react-native-snappy@^0.0.15:
+  version "0.0.15"
+  resolved "https://registry.yarnpkg.com/react-native-snappy/-/react-native-snappy-0.0.15.tgz#d8db5e78e6d9c5ee1b289dc498b16380fc0e00f2"
+  integrity sha512-2juLdNtKC9jM0NmVcx+03+kuTuo/K9hCItT8gxZWvNaxUQArFIs8kHxxjQyxuU9CtFRIelkKgh0mrc/Rjaaf6Q==
 
 react-native-svg@^12.3.0:
   version "12.3.0"
