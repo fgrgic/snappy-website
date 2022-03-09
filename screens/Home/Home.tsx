@@ -21,14 +21,14 @@ const Home = (props: Props) => {
       {snappyNameArray
         .filter((iconName) => {
           if (debouncedQuery === '') return true;
-
+          const kebabCaseQuery = query.replace(/\s+/g, '-').toLowerCase();
           let iconInQuery = false;
           allSvgIcons[iconName].keywords?.forEach((keyword) => {
-            if (keyword.includes(query)) {
+            if (keyword.includes(kebabCaseQuery)) {
               iconInQuery = true;
             }
           });
-          if (iconName.includes(query)) iconInQuery = true;
+          if (iconName.includes(kebabCaseQuery)) iconInQuery = true;
           return iconInQuery;
         })
         .map((iconName) => (
