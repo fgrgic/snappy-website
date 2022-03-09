@@ -1,8 +1,5 @@
 import React, { Dispatch, SetStateAction } from 'react';
-import {
-  useTheme,
-  ThemeProvider as DefaultThemeProvider,
-} from 'styled-components/native';
+import { ThemeProvider as DefaultThemeProvider } from 'styled-components/native';
 import { useColorScheme } from 'react-native';
 import LightTheme from '../ui/theme/themes/LightTheme';
 import DarkTheme from '../ui/theme/themes/DarkTheme';
