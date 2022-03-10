@@ -20,7 +20,7 @@ const StrokeWidthPicker = ({
         {[0.5, 1, 1.5, 2, 2.5].map((strokeWidth) => {
           const selected = value === strokeWidth;
           return (
-            <Pressable onPress={() => onChange(strokeWidth)} {...rest}>
+            <Pressable key={strokeWidth} onPress={() => onChange(strokeWidth)} {...rest}>
               <View
                 paddingVertical='small'
                 paddingHorizontal='xxsmall'
