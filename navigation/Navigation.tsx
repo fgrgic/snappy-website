@@ -30,8 +30,16 @@ const Main = createNativeStackNavigator<MainStackParamList>();
 const MainNavigator = () => {
   return (
     <Main.Navigator screenOptions={{ headerShown: false }}>
-      <Main.Screen name='Home' component={Home}></Main.Screen>
-      <Main.Screen name='About' component={About}></Main.Screen>
+      <Main.Screen
+        name='Home'
+        component={Home}
+        options={{ title: 'Snappy Icons' }}
+      ></Main.Screen>
+      <Main.Screen
+        name='About'
+        component={About}
+        options={{ title: 'Snappy - About' }}
+      ></Main.Screen>
     </Main.Navigator>
   );
 };
