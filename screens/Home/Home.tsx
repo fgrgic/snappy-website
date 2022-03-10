@@ -96,7 +96,7 @@ const Home = (props: Props) => {
                   name={iconName}
                   color={
                     debouncedColor.length <= 3 ||
-                    (debouncedColor.length > 3 &&
+                    (debouncedColor.length > 4 &&
                       debouncedColor.length % 2 === 0)
                       ? theme.palette.alpha.text
                       : debouncedColor
