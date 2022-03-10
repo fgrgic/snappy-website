@@ -124,6 +124,10 @@ Text.CopySmall = (props: TextProps) => (
   <Text weight={400} size='small' {...props} />
 );
 
+Text.Plain = (props: TextProps) => (
+  <Text paddingHorizontal={0} {...props}></Text>
+);
+
 Text.Title = (props: TextProps) => (
   <Text fontFamily='suez-one' size='large' {...props} />
 );

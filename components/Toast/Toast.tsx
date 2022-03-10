@@ -38,7 +38,7 @@ const ToastContainer = styled(View)<Pick<ToastProps, 'tone'>>`
     tone === 'error'
       ? theme.palette.error.main
       : tone === 'success'
-      ? theme.palette.primary.C
+      ? theme.palette.primary.A
       : theme.palette.alpha.B};
 `;
 

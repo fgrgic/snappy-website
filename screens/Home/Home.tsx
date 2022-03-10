@@ -11,16 +11,23 @@ import SearchResults from '../../components/SearchResults';
 import Header from '../../components/Header';
 import { useTheme } from 'styled-components/native';
 import Toast from '../../components/Toast';
+import CustomizationBar from '../../components/CustomizationBar';
+import HexColorPicker from '../../components/HexColorPicker';
+import StrokeWidthPicker from '../../components/StrokeWidthPicker';
 
 type Props = {};
 
 const Home = (props: Props) => {
-  const [query, setQuery] = React.useState('');
-  const [showToast, setShowToast] = React.useState<String | boolean>(false);
-
-  const debouncedQuery = useDebounce<string>(query, 300);
   const theme = useTheme();
   const { themeVersion, setThemeVersion } = useCustomTheme();
+
+  const [query, setQuery] = React.useState('');
+  const [showToast, setShowToast] = React.useState<String | boolean>(false);
+  const [strokeWidth, setStrokeWidth] = React.useState(2);
+  const [iconColor, setIconColor] = React.useState(theme.palette.alpha.text);
+
+  const debouncedQuery = useDebounce<string>(query, 300);
+  const debouncedColor = useDebounce<string>(iconColor, 500);
 
   React.useEffect(() => {
     if (!showToast) return;
@@ -34,6 +41,10 @@ const Home = (props: Props) => {
     };
   }, [showToast]);
 
+  React.useEffect(() => {
+    setIconColor(theme.palette.alpha.text);
+  }, [themeVersion]);
+
   return (
     <>
       <Toast
@@ -46,8 +57,21 @@ const Home = (props: Props) => {
           <Header />
           <Spacer />
           <Logo />
+          <Spacer size='large' />
+          <Text.H4 paddingHorizontal='small'>Customize</Text.H4>
+          <CustomizationBar>
+            <HexColorPicker
+              value={iconColor}
+              onChangeText={(newText) => setIconColor(newText)}
+            />
+            <StrokeWidthPicker
+              value={strokeWidth}
+              onChange={(newWidth) => setStrokeWidth(newWidth)}
+            />
+          </CustomizationBar>
           <Spacer />
-          <Spacer />
+          <Text.H4 paddingHorizontal='small'>Search</Text.H4>
+          <Spacer size='small' />
           <Search query={query} onChange={(newQuery) => setQuery(newQuery)} />
           <Spacer />
           <SearchResults>
@@ -68,7 +92,8 @@ const Home = (props: Props) => {
                 <IconCard
                   key={iconName}
                   name={iconName}
-                  color={theme.palette.alpha.text}
+                  color={debouncedColor}
+                  strokeWidth={strokeWidth}
                   onPress={() => setShowToast(iconName)}
                 />
               ))}
