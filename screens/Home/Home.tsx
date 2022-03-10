@@ -92,7 +92,13 @@ const Home = (props: Props) => {
                 <IconCard
                   key={iconName}
                   name={iconName}
-                  color={debouncedColor}
+                  color={
+                    debouncedColor.length <= 3 ||
+                    (debouncedColor.length > 3 &&
+                      debouncedColor.length % 2 === 0)
+                      ? theme.palette.alpha.text
+                      : debouncedColor
+                  }
                   strokeWidth={strokeWidth}
                   onPress={() => setShowToast(iconName)}
                 />

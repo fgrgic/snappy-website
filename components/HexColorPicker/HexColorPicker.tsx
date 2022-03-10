@@ -34,12 +34,12 @@ const HexColorPicker = (props: HexColorPickerProps) => {
           selectTextOnFocus
           {...props}
           onChangeText={(newText) => {
+            const cleanedUpText = newText
+              .replace(/#+/g, '')
+              .replace(/[^ABCDEFabcdef0-9]/g, '')
+              .substring(0, 8);
             if (props.onChangeText) {
-              if (newText.startsWith('#')) {
-                props.onChangeText(newText);
-              } else {
-                props.onChangeText('#' + newText);
-              }
+              props.onChangeText('#' + cleanedUpText);
             }
           }}
         />
