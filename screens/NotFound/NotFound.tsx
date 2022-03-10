@@ -26,7 +26,7 @@ const NotFound = (props: Props) => {
             alignItems: 'center',
             marginLeft: theme.spacing.sizes.medium,
           }}
-          onPress={() => navigation.navigate('Home')}
+          onPress={() => navigation.navigate('Root')}
         >
           <Snappy
             name='home'
