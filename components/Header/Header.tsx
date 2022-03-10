@@ -9,7 +9,7 @@ type Props = {};
 
 const Header = (props: Props) => {
   return (
-    <Container marginVertical='small'>
+    <Container marginVertical='small' marginHorizontal='small'>
       <Text paddingHorizontal={0}>
         Check it out on{' '}
         <Pressable

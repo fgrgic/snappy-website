@@ -1,4 +1,5 @@
 import React from 'react';
+import { useWindowDimensions } from 'react-native';
 import Snappy, { SnappyIconNames } from 'react-native-snappy';
 import styled, { useTheme } from 'styled-components/native';
 import Spacing from '../../ui/mixins/Spacing';
@@ -20,14 +21,20 @@ const IconCard = ({
   cardSize: propCardSize,
 }: IconCardProps) => {
   const theme = useTheme();
-  const DEFAULT_SIZE = 1000 / 6 - theme.spacing.sizes.small * 2;
+  const { width } = useWindowDimensions();
+  const MAX_WIDTH = 1000;
+
+  const smallWidth = width < MAX_WIDTH;
+  const contentWidth = smallWidth ? width : MAX_WIDTH;
+  const perRow = smallWidth ? 3 : 6;
+  const DEFAULT_SIZE = contentWidth / perRow - theme.spacing.sizes.small * 2;
   const cardSize = propCardSize ?? DEFAULT_SIZE;
 
   return (
     <Container size={cardSize}>
       <Snappy name={name} color={color} strokeWidth={strokeWidth} size={size} />
       <Spacer />
-      <Text>{name}</Text>
+      <Text size='small'>{name}</Text>
     </Container>
   );
 };

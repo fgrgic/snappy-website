@@ -7,7 +7,7 @@ const Logo = () => {
   const theme = useTheme();
 
   return (
-    <LogoContainer>
+    <LogoContainer marginHorizontal='small'>
       <Snappy
         name='snap'
         size={theme.typography.sizes.xxlarge}
