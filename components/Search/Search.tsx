@@ -11,7 +11,7 @@ const Search = ({ query, onChange }: SearchProps) => {
     <Input
       clearButtonMode='always'
       autoFocus
-      placeholder=''
+      placeholder='E.g. device'
       selectTextOnFocus
       value={query}
       onChangeText={onChange}
