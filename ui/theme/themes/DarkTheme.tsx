@@ -8,6 +8,16 @@ const DarkTheme: DefaultTheme = {
   name: 'Dark Theme',
   palette: {
     ...theme.palette,
+    alpha: {
+      ...theme.palette.alpha,
+      A: colors.gunmetal[800],
+      B: colors.gunmetal[600],
+      C: colors.gunmetal[400],
+      D: colors.gunmetal[100],
+      E: colors.gunmetal[50],
+      text: colors.white,
+      textAlt: colors.black,
+    },
     primary: {
       A: colors.naturalBlue[100],
       B: colors.naturalBlue[300],

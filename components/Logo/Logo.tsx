@@ -8,7 +8,11 @@ const Logo = () => {
 
   return (
     <LogoContainer>
-      <Snappy name='snap' size={theme.typography.sizes.xxlarge} />
+      <Snappy
+        name='snap'
+        size={theme.typography.sizes.xxlarge}
+        color={theme.palette.alpha.text}
+      />
       <Text.H2>Snappy Icons</Text.H2>
     </LogoContainer>
   );

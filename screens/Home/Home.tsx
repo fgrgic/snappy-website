@@ -1,4 +1,4 @@
-import { Button, View } from 'react-native';
+import { Button, Pressable, Linking } from 'react-native';
 import React from 'react';
 import { Text, Screen, Spacer } from '../../ui/primitives';
 import { useCustomTheme } from '../../providers/ThemeProvider';
@@ -8,17 +8,24 @@ import IconCard from '../../components/IconCard';
 import Search from '../../components/Search';
 import useDebounce from '../../hooks/useDebounce';
 import SearchResults from '../../components/SearchResults';
+import Header from '../../components/Header';
+import { useTheme } from 'styled-components/native';
 
 type Props = {};
 
 const Home = (props: Props) => {
   const [query, setQuery] = React.useState('');
   const debouncedQuery = useDebounce<string>(query, 300);
+  const theme = useTheme();
+  const { themeVersion, setThemeVersion } = useCustomTheme();
 
   return (
     <Screen>
       <Screen.Content>
+        <Header />
+        <Spacer />
         <Logo />
+        <Spacer />
         <Spacer />
         <Search query={query} onChange={(newQuery) => setQuery(newQuery)} />
         <Spacer />
@@ -37,7 +44,11 @@ const Home = (props: Props) => {
               return iconInQuery;
             })
             .map((iconName) => (
-              <IconCard name={iconName} />
+              <IconCard
+                key={iconName}
+                name={iconName}
+                color={theme.palette.alpha.text}
+              />
             ))}
         </SearchResults>
       </Screen.Content>
