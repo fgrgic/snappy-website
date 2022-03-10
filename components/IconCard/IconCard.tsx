@@ -1,10 +1,8 @@
 import React from 'react';
 import Snappy, { SnappyIconNames } from 'react-native-snappy';
-import styled from 'styled-components/native';
+import styled, { useTheme } from 'styled-components/native';
 import Spacing from '../../ui/mixins/Spacing';
 import { Spacer, Text, View } from '../../ui/primitives';
-
-const DEFAULT_SIZE = 150;
 
 type IconCardProps = {
   name: SnappyIconNames;
@@ -19,8 +17,12 @@ const IconCard = ({
   color,
   strokeWidth,
   size,
-  cardSize = DEFAULT_SIZE,
+  cardSize: propCardSize,
 }: IconCardProps) => {
+  const theme = useTheme();
+  const DEFAULT_SIZE = 1000 / 6 - theme.spacing.sizes.small * 2;
+  const cardSize = propCardSize ?? DEFAULT_SIZE;
+
   return (
     <Container size={cardSize}>
       <Snappy name={name} color={color} strokeWidth={strokeWidth} size={size} />
@@ -40,7 +42,7 @@ const Container = styled(View)<ContainerProps>`
   background-color: ${({ theme }) => theme.palette.alpha.A};
   width: ${({ size }) => size}px;
   height: ${({ size }) => size}px;
-  border-radius: ${({ theme }) => theme.shape.borderRadius.large}px;
+  border-radius: ${({ theme }) => theme.shape.borderRadius.medium}px;
   margin: ${({ theme }) => theme.spacing.sizes.small}px;
 `;
 

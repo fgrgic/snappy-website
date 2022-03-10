@@ -1,6 +1,6 @@
 import { Button, View } from 'react-native';
 import React from 'react';
-import { Text, Screen } from '../../ui/primitives';
+import { Text, Screen, Spacer } from '../../ui/primitives';
 import { useCustomTheme } from '../../providers/ThemeProvider';
 import Snappy, { allSvgIcons, snappyNameArray } from 'react-native-snappy';
 import Logo from '../../components/Logo';
@@ -19,7 +19,9 @@ const Home = (props: Props) => {
     <Screen>
       <Screen.Content>
         <Logo />
+        <Spacer />
         <Search query={query} onChange={(newQuery) => setQuery(newQuery)} />
+        <Spacer />
         <SearchResults>
           {snappyNameArray
             .filter((iconName) => {

@@ -7,7 +7,7 @@ interface SearchProps {
 }
 
 const Search = ({ query, onChange }: SearchProps) => {
-  return <Input value={query} onChangeText={onChange} />;
+  return <Input placeholder='Search' value={query} onChangeText={onChange} />;
 };
 
 export default Search;
