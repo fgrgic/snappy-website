@@ -8,9 +8,6 @@ import ThemeToggle from '../ThemeToggle';
 type Props = {};
 
 const Header = (props: Props) => {
-  const { themeVersion, setThemeVersion, themePreference, setThemePreference } =
-    useCustomTheme();
-
   return (
     <Container marginVertical='small'>
       <Text paddingHorizontal={0}>
@@ -22,6 +19,16 @@ const Header = (props: Props) => {
         >
           <Text paddingHorizontal={0} color='primary.D'>
             GitHub
+          </Text>
+        </Pressable>{' '}
+        or{' '}
+        <Pressable
+          onPress={() =>
+            Linking.openURL('https://www.npmjs.com/package/react-native-snappy')
+          }
+        >
+          <Text paddingHorizontal={0} color='primary.D'>
+            npm
           </Text>
         </Pressable>
       </Text>
