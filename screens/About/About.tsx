@@ -18,8 +18,9 @@ const About = (props: Props) => {
       <Screen.Content>
         <View>
           <Header />
-          <Logo />
           <Spacer />
+          <Logo />
+          <Spacer size='large' />
           <Text.H3>About</Text.H3>
           <Spacer />
           <Text.Copy>
