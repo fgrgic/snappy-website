@@ -13,19 +13,27 @@ interface ToastProps {
 const Toast = ({ text, tone = 'neutral', shown }: ToastProps) => {
   if (!shown) return null;
   return (
-    <Container style={{ position: 'absolute' }} tone={tone}>
-      <Text color='primary.text'>{text}</Text>
+    <Container>
+      <ToastContainer tone={tone}>
+        <Text color='primary.text'>{text}</Text>
+      </ToastContainer>
     </Container>
   );
 };
 
-const Container = styled(View)<Pick<ToastProps, 'tone'>>`
+const Container = styled(View)`
   position: absolute;
-  border-radius: ${({ theme }) => theme.shape.borderRadius.small}px;
-  bottom: ${({ theme }) => theme.spacing.sizes.xxlarge};
-  left: auto;
+  width: 100%;
+  bottom: ${({ theme }) => theme.spacing.sizes.xlarge}px;
+  align-items: center;
+  justify-content: center;
   elevation: 10;
   z-index: 10;
+`;
+
+const ToastContainer = styled(View)<Pick<ToastProps, 'tone'>>`
+  border-radius: ${({ theme }) => theme.shape.borderRadius.small}px;
+  padding: ${({ theme }) => theme.spacing.sizes.xsmall}px;
   background-color: ${({ tone, theme }) =>
     tone === 'error'
       ? theme.palette.error.main

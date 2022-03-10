@@ -35,45 +35,47 @@ const Home = (props: Props) => {
   }, [showToast]);
 
   return (
-    <Screen>
+    <>
       <Toast
         text={`Copied "${showToast}" to clipboard`}
         shown={!!showToast}
         tone='success'
       />
-      <Screen.Content>
-        <Header />
-        <Spacer />
-        <Logo />
-        <Spacer />
-        <Spacer />
-        <Search query={query} onChange={(newQuery) => setQuery(newQuery)} />
-        <Spacer />
-        <SearchResults>
-          {snappyNameArray
-            .filter((iconName) => {
-              if (debouncedQuery === '') return true;
-              const kebabCaseQuery = query.replace(/\s+/g, '-').toLowerCase();
-              let iconInQuery = false;
-              allSvgIcons[iconName].keywords?.forEach((keyword) => {
-                if (keyword.includes(kebabCaseQuery)) {
-                  iconInQuery = true;
-                }
-              });
-              if (iconName.includes(kebabCaseQuery)) iconInQuery = true;
-              return iconInQuery;
-            })
-            .map((iconName) => (
-              <IconCard
-                key={iconName}
-                name={iconName}
-                color={theme.palette.alpha.text}
-                onPress={() => setShowToast(iconName)}
-              />
-            ))}
-        </SearchResults>
-      </Screen.Content>
-    </Screen>
+      <Screen>
+        <Screen.Content>
+          <Header />
+          <Spacer />
+          <Logo />
+          <Spacer />
+          <Spacer />
+          <Search query={query} onChange={(newQuery) => setQuery(newQuery)} />
+          <Spacer />
+          <SearchResults>
+            {snappyNameArray
+              .filter((iconName) => {
+                if (debouncedQuery === '') return true;
+                const kebabCaseQuery = query.replace(/\s+/g, '-').toLowerCase();
+                let iconInQuery = false;
+                allSvgIcons[iconName].keywords?.forEach((keyword) => {
+                  if (keyword.includes(kebabCaseQuery)) {
+                    iconInQuery = true;
+                  }
+                });
+                if (iconName.includes(kebabCaseQuery)) iconInQuery = true;
+                return iconInQuery;
+              })
+              .map((iconName) => (
+                <IconCard
+                  key={iconName}
+                  name={iconName}
+                  color={theme.palette.alpha.text}
+                  onPress={() => setShowToast(iconName)}
+                />
+              ))}
+          </SearchResults>
+        </Screen.Content>
+      </Screen>
+    </>
   );
 };
 
