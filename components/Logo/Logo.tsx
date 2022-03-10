@@ -1,13 +1,15 @@
 import React from 'react';
 import Snappy from 'react-native-snappy';
-import styled from 'styled-components/native';
+import styled, { useTheme } from 'styled-components/native';
 import { View, Text } from '../../ui/primitives';
 
 const Logo = () => {
+  const theme = useTheme();
+
   return (
     <LogoContainer>
-      <Snappy name='snap' />
-      <Text weight='bold'>Snappy Icons</Text>
+      <Snappy name='snap' size={theme.typography.sizes.xxlarge} />
+      <Text.H2>Snappy Icons</Text.H2>
     </LogoContainer>
   );
 };
