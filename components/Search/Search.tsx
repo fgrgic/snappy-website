@@ -12,6 +12,7 @@ const Search = ({ query, onChange }: SearchProps) => {
       clearButtonMode='always'
       autoFocus
       placeholder=''
+      selectTextOnFocus
       value={query}
       onChangeText={onChange}
     />
