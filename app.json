@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "snappy-website",
+    "name": "Snappy Icons",
     "slug": "snappy-website",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -13,9 +13,7 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },
@@ -26,7 +24,11 @@
       }
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/favicon.png",
+      "name": "Snappy Icons",
+      "shortName": "Snappy",
+      "lang": "en",
+      "description": "A set of more than 350 open source icons to use in your next React Native project"
     }
   }
 }
