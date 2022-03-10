@@ -10,17 +10,37 @@ import useDebounce from '../../hooks/useDebounce';
 import SearchResults from '../../components/SearchResults';
 import Header from '../../components/Header';
 import { useTheme } from 'styled-components/native';
+import Toast from '../../components/Toast';
 
 type Props = {};
 
 const Home = (props: Props) => {
   const [query, setQuery] = React.useState('');
+  const [showToast, setShowToast] = React.useState<String | boolean>(false);
+
   const debouncedQuery = useDebounce<string>(query, 300);
   const theme = useTheme();
   const { themeVersion, setThemeVersion } = useCustomTheme();
 
+  React.useEffect(() => {
+    if (!showToast) return;
+
+    const timeout = setTimeout(() => {
+      setShowToast(false);
+    }, 2000);
+
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, [showToast]);
+
   return (
     <Screen>
+      <Toast
+        text={`Copied "${showToast}" to clipboard`}
+        shown={!!showToast}
+        tone='success'
+      />
       <Screen.Content>
         <Header />
         <Spacer />
@@ -48,6 +68,7 @@ const Home = (props: Props) => {
                 key={iconName}
                 name={iconName}
                 color={theme.palette.alpha.text}
+                onPress={() => setShowToast(iconName)}
               />
             ))}
         </SearchResults>

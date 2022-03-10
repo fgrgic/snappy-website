@@ -1,8 +1,9 @@
 import React from 'react';
-import { useWindowDimensions } from 'react-native';
+import { Pressable, useWindowDimensions } from 'react-native';
 import Snappy, { SnappyIconNames } from 'react-native-snappy';
 import styled, { useTheme } from 'styled-components/native';
-import Spacing from '../../ui/mixins/Spacing';
+import * as Clipboard from 'expo-clipboard';
+
 import { Spacer, Text, View } from '../../ui/primitives';
 
 type IconCardProps = {
@@ -11,6 +12,7 @@ type IconCardProps = {
   strokeWidth?: number;
   size?: number;
   cardSize?: number;
+  onPress?: () => void;
 };
 
 const IconCard = ({
@@ -19,6 +21,7 @@ const IconCard = ({
   strokeWidth,
   size,
   cardSize: propCardSize,
+  onPress,
 }: IconCardProps) => {
   const theme = useTheme();
   const { width } = useWindowDimensions();
@@ -31,11 +34,23 @@ const IconCard = ({
   const cardSize = propCardSize ?? DEFAULT_SIZE;
 
   return (
-    <Container size={cardSize}>
-      <Snappy name={name} color={color} strokeWidth={strokeWidth} size={size} />
-      <Spacer />
-      <Text size='small'>{name}</Text>
-    </Container>
+    <Pressable
+      onPress={() => {
+        if (onPress) onPress();
+        Clipboard.setString(name);
+      }}
+    >
+      <Container size={cardSize}>
+        <Snappy
+          name={name}
+          color={color}
+          strokeWidth={strokeWidth}
+          size={size}
+        />
+        <Spacer />
+        <Text size='small'>{name}</Text>
+      </Container>
+    </Pressable>
   );
 };
 
