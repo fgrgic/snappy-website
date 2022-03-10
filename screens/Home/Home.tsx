@@ -14,12 +14,14 @@ import Toast from '../../components/Toast';
 import CustomizationBar from '../../components/CustomizationBar';
 import HexColorPicker from '../../components/HexColorPicker';
 import StrokeWidthPicker from '../../components/StrokeWidthPicker';
+import { useNavigation } from '@react-navigation/native';
 
 type Props = {};
 
 const Home = (props: Props) => {
   const theme = useTheme();
   const { themeVersion, setThemeVersion } = useCustomTheme();
+  const navigation = useNavigation();
 
   const [query, setQuery] = React.useState('');
   const [showToast, setShowToast] = React.useState<String | boolean>(false);
@@ -104,6 +106,19 @@ const Home = (props: Props) => {
                 />
               ))}
           </SearchResults>
+          <Spacer />
+          <Text.Copy>
+            Snappy Icons pack is developed and maintained by{' '}
+            <Pressable
+              onPress={() => Linking.openURL('https://github.com/fgrgic')}
+            >
+              <Text.Plain color='primary.C'>@fgrgic.</Text.Plain>
+            </Pressable>
+          </Text.Copy>
+          <Pressable onPress={() => navigation.navigate('About')}>
+            <Text.Copy color='primary.C'>Read More</Text.Copy>
+          </Pressable>
+          <Spacer size='xlarge' />
         </Screen.Content>
       </Screen>
     </>
